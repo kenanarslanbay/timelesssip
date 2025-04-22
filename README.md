@@ -1,56 +1,44 @@
-# Timeless Sip Coffee Shop
+# Timeless Sip
 
-A Flask web application for a coffee shop with menu, reservations, and contact features.
+**A modern, responsive Flask web application for a specialty coffee shop.**
 
-## Setup
+---
 
-1. Create a virtual environment:
-```bash
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
+## 🚀 Project Overview
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+**Timeless Sip** is a full‑stack Flask application that showcases:
 
-3. Set up environment variables:
-```bash
-export FLASK_APP=run.py
-export FLASK_ENV=development
-export SECRET_KEY=your-secret-key-here
-```
+- **Home**: Hero banner + feature cards (About, Coffee Quiz, Contact)  
+- **About Us**: Our coffee passion and sourcing story  
+- **Coffees Menu**: List of coffee offerings (filtered to “Coffees” category)  
+- **Coffee Quiz**: Interactive 3‑step quiz recommending the perfect brew  
+- **Contact**: CSRF‑protected contact form powered by Flask‑WTF  
 
-4. Initialize the database:
-```bash
-flask shell
->>> from app import db
->>> db.create_all()
->>> exit()
-```
+It uses Jinja2 templates (`app/templates`), static assets (`app/static`), and SQLAlchemy models (`app/models.py`) with Postgres (or SQLite fallback).
 
-5. Run the application:
-```bash
-flask run
-```
+---
 
-## Features
+## 📋 Tech Stack
 
-- Homepage with featured items
-- Menu page with categorized items
-- Coffee guide with brewing information
-- Contact form for inquiries
-- Reservation system
-- About page with team information
+- **Backend**: Python 3.x, Flask, Flask‑SQLAlchemy, Flask‑WTF  
+- **Database**: PostgreSQL (primary) or SQLite (`app.db`) fallback  
+- **Templating**: Jinja2  
+- **Styling**: Custom CSS (with a warm coffee palette) + Flickity for carousel  
+- **Forms & Validation**: WTForms + `email_validator`
 
-## Project Structure
+---
 
-- `app/` - Main application package
-  - `static/` - Static files (CSS, images)
-  - `templates/` - HTML templates
-  - `models.py` - Database models
-  - `forms.py` - Form definitions
-  - `routes.py` - Route handlers
-- `config.py` - Configuration settings
-- `run.py` - Application entry point 
+## 🔧 Prerequisites
+
+- **Python 3.8+**  
+- **pip**  
+- **PostgreSQL** (tested on Postgres 14 via Homebrew)
+
+---
+
+## ⛳ Getting Started
+
+1. **Clone this repo**  
+   ```bash
+   git clone https://github.com/yourusername/timelesssip.git
+   cd timelesssip
