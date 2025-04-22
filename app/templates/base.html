@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %} – Timeless Sip</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="{{ url_for('main.home') }}" class="logo">Timeless Sip</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="nav-menu" class="nav-links" hidden>
+        <li><a href="{{ url_for('main.home') }}">Home</a></li>
+        <li><a href="{{ url_for('main.about') }}">About Us</a></li>
+        <li><a href="{{ url_for('main.menu') }}">Menu</a></li>
+        <li><a href="{{ url_for('main.guide') }}">Coffee Quiz</a></li>
+        <li><a href="{{ url_for('main.contact') }}" class="cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <footer>
+    <p>&copy; 2024 Timeless Sip. Brewed with <span>love</span>.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+</body>
+</html>

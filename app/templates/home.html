@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Freshly Brewed Coffee Every Day</h1>
+    <p>Start your mornings with a cup of perfection. Explore our handcrafted beverages and enjoy the ultimate coffee experience.</p>
+    <a href="{{ url_for('main.menu') }}" class="btn-primary">View Menu</a>
+  </div>
+</section>
+
+<section class="card-row">
+  <a href="{{ url_for('main.about') }}" class="card">
+    <img src="{{ url_for('static', filename='images/yeni.jpg') }}" alt="About Us">
+    <h3>About Us</h3>
+    <p>Discover the essence of timeless flavors crafted to perfection.</p>
+  </a>
+  <a href="{{ url_for('main.guide') }}" class="card">
+    <img src="{{ url_for('static', filename='images/coffees.jpeg') }}" alt="Find Your Coffee">
+    <h3>Find Your Coffee</h3>
+    <p>Take our quick quiz to discover your perfect brew.</p>
+  </a>
+  <a href="{{ url_for('main.contact') }}" class="card">
+    <img src="{{ url_for('static', filename='images/contact.jpg') }}" alt="Contact">
+    <h3>Contact</h3>
+    <p>We’re here to help you. Let’s get in touch!</p>
+  </a>
+</section>
+
+<section class="small-card-row">
+  <div class="small-card">
+    <img src="{{ url_for('static', filename='images/participants/BurcuEkim.jpeg') }}" alt="Burcu Ekim">
+    <h4>Burcu Ekim</h4>
+  </div>
+  <div class="small-card">
+    <img src="{{ url_for('static', filename='images/participants/KenanArslanbay.jpeg') }}" alt="Kenan Arslanbay">
+    <h4>Kenan Arslanbay</h4>
+  </div>
+  <div class="small-card">
+    <img src="{{ url_for('static', filename='images/participants/HazalMentes.jpeg') }}" alt="Hazal Menteş">
+    <h4>Hazal Menteş</h4>
+</section>
+{% endblock %}

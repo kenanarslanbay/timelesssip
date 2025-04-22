@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Coffees{% endblock %}
+
+{% block content %}
+<main class="menu-container">
+  <h1>Coffees</h1>
+  <div class="menu-grid">
+    <div class="menu-category">
+      <ul>
+        {# Loop only coffees #}
+        {% for item in items if item.category == 'Coffees' %}
+        <li>{{ item.name }} <span>{{ item.price|round(0) }} CZK</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coffee Guide</title>
+    <style>
+        .quiz-step.hidden { display: none; }
+        .options { margin: 10px 0; }
+        button { margin: 5px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <!-- Step 1: Introductory question (not used in recommendation) -->
+    <div class="quiz-step" data-step="1">
+        <p class="question">Have you tried our coffee before?</p>
+        <div class="options">
+            <button data-answer="yes" data-next="2">Yes</button>
+            <button data-answer="no" data-next="2">No</button>
+        </div>
+    </div>
+
+    <!-- Step 2: Milk preference (branching point) -->
+    <div class="quiz-step hidden" data-step="2">
+        <p class="question">Do you like your coffee with milk or without?</p>
+        <div class="options">
+            <button data-answer="milk" data-next="3">With Milk</button>
+            <button data-answer="black" data-next="4">Without Milk</button>
+        </div>
+    </div>
+
+    <!-- Step 3: Milk-based preference -->
+    <div class="quiz-step hidden" data-step="3">
+        <p class="question">Do you prefer a more balanced taste or a sweeter, milky profile?</p>
+        <div class="options">
+            <button data-answer="balanced" data-next="result">Balanced</button>
+            <button data-answer="sweet" data-next="result">Milky & Sweet</button>
+        </div>
+    </div>
+
+    <!-- Step 4: Black coffee preference (new step) -->
+    <div class="quiz-step hidden" data-step="4">
+        <p class="question">Do you prefer a concentrated shot or a diluted drink?</p>
+        <div class="options">
+            <button data-answer="concentrated" data-next="result">Concentrated</button>
+            <button data-answer="diluted" data-next="result">Diluted</button>
+        </div>
+    </div>
+
+    <!-- Result -->
+    <div id="quiz-result" class="hidden">
+        <p>We recommend: <span id="coffee-name"></span></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const steps = document.querySelectorAll('.quiz-step');
+            const resultEl = document.getElementById('quiz-result');
+            const coffeeNameEl = document.getElementById('coffee-name');
+            const answers = {};
+
+            // Show one step at a time
+            function showStep(stepId) {
+                steps.forEach(el => {
+                    el.classList.toggle('hidden', el.dataset.step !== stepId);
+                });
+            }
+
+            // Display recommendation
+            function showResult() {
+                let rec;
+                if (answers['preference'] === 'milk') {
+                    if (answers['milk_preference'] === 'sweet') rec = 'Latte';
+                    else if (answers['milk_preference'] === 'balanced') rec = 'Cappuccino';
+                    else rec = 'Latte'; // Default for milk
+                } else if (answers['preference'] === 'black') {
+                    if (answers['black_preference'] === 'concentrated') rec = 'Espresso';
+                    else if (answers['black_preference'] === 'diluted') rec = 'Americano';
+                    else rec = 'Espresso'; // Default for black
+                } else {
+                    rec = 'Espresso'; // Overall default
+                }
+                coffeeNameEl.textContent = rec;
+                steps.forEach(el => el.classList.add('hidden'));
+                resultEl.classList.remove('hidden');
+            }
+
+            // Handle button clicks
+            steps.forEach(stepEl => {
+                const stepId = stepEl.dataset.step;
+                stepEl.querySelectorAll('button').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (stepId === '2') {
+                            answers['preference'] = btn.dataset.answer;
+                        } else if (stepId === '3') {
+                            answers['milk_preference'] = btn.dataset.answer;
+                        } else if (stepId === '4') {
+                            answers['black_preference'] = btn.dataset.answer;
+                        }
+                        const next = btn.dataset.next;
+                        if (next === 'result') {
+                            showResult();
+                        } else {
+                            showStep(next);
+                        }
+                    });
+                });
+            });
+
+            // Start at step 1
+            showStep('1');
+        });
+    </script>
+</body>
+</html>

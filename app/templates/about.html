@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<main class="content">
+  <h1>About Timeless Sip</h1>
+  <div class="scroll-box">
+    <p>At Timeless Sip, our passion for coffee is at the heart of everything we do. We believe that each cup tells a story—from the sun-drenched farms where beans are nurtured to the artistry of roasting and brewing.</p>
+    <p>We source only the finest single-origin beans, partnering with dedicated farmers who share our commitment to sustainability and quality. Every batch is carefully roasted to unlock its unique flavor profile.</p>
+    <p>Whether you prefer an intense espresso or a creamy latte, we’re here to guide you to your perfect cup. Take our <a href="{{ url_for('main.guide') }}" class="link">Coffee Quiz</a> and discover the flavors that match your taste.</p>
+    <p>Join us on this flavorful journey—your next favorite coffee is just a sip away.</p>
+  </div>
+</main>
+{% endblock %}

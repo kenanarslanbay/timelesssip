@@ -1,0 +1,29 @@
+{# app/templates/contact.html #}
+{% extends 'base.html' %}
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<main class="form-row">
+  <section class="form-section">
+    <h2>Contact Us</h2>
+    <form method="post" action="{{ url_for('main.contact') }}" aria-label="Contact form">
+      {{ contact_form.hidden_tag() }}
+
+      <div>
+        {{ contact_form.name.label }}
+        {{ contact_form.name(class="input") }}
+      </div>
+      <div>
+        {{ contact_form.email.label }}
+        {{ contact_form.email(class="input") }}
+      </div>
+      <div>
+        {{ contact_form.message.label }}
+        {{ contact_form.message(class="textarea") }}
+      </div>
+
+      {{ contact_form.submit(class="btn-primary") }}
+    </form>
+  </section>
+</main>
+{% endblock %}
