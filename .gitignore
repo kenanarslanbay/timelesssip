@@ -1,4 +1,5 @@
 *__pyache__
 *ipynb
-*pyc
+*.pyc
 *.DS_Store
+*venv
