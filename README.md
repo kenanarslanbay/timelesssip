@@ -10,7 +10,7 @@
 
 - **Home**: Hero banner + feature cards (About, Coffee Quiz, Contact)  
 - **About Us**: Our coffee passion and sourcing story  
-- **Coffees Menu**: List of coffee offerings (filtered to “Coffees” category)  
+- **Coffees Menu**: List of coffee offerings  
 - **Coffee Quiz**: Interactive 3‑step quiz recommending the perfect brew  
 - **Contact**: CSRF‑protected contact form powered by Flask‑WTF  
 
